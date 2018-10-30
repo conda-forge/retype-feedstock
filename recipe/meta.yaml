@@ -12,7 +12,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
+  number: 1000
   skip: true  # [py<36]
   entry_points:
     - retype=retype:main
