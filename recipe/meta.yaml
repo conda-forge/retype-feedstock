@@ -1,31 +1,29 @@
 {% set name = "retype" %}
-{% set version = "17.12.0" %}
-{% set sha256 = "b64b767befbe6f5fd918603ab7d6bbff07fc4c431bae2f471e195677a0c9b327" %}
+{% set version = "19.9.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 846fd135d3ee33c1bad387602a405d808cb99a9a7a47299bfd0e1d25dfb2fedd
 
 build:
-  number: 1000
-  skip: true  # [py<36]
+  number: 0
+  noarch: python
   entry_points:
-    - retype=retype:main
+    - retype=retype.__main__:main
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   host:
     - pip
-    - python
-    - setuptools
+    - python >=3.6
   run:
     - click
-    - python
+    - pathspec >=0.5.9,<1
+    - python >=3.6
     - typed-ast
 
 test:
@@ -34,6 +32,7 @@ test:
   imports:
     - retype
   commands:
+    - retype --version
     - retype --help
     - cd tests
     - python test_retype.py
@@ -42,8 +41,7 @@ about:
   home: https://github.com/ambv/retype
   license: MIT
   license_family: MIT
-  # FIXME: The upstream PR might land some time >17.12.0
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
+  license_file: LICENSE
   summary: Re-apply type annotations from .pyi stubs to your codebase.
 
   description: |
