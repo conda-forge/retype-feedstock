@@ -13,7 +13,7 @@ build:
   number: 0
   noarch: python
   entry_points:
-    - retype=retype:main
+    - retype=retype.__main__:main
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
