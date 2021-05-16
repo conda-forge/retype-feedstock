@@ -33,7 +33,8 @@ test:
     - retype
   commands:
     - retype --version
-    - retype --help
+    # https://github.com/pallets/click/issues/1899
+    # - retype --help
     - cd tests
     - python test_retype.py
 
