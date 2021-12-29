@@ -1,5 +1,5 @@
 {% set name = "retype" %}
-{% set version = "21.10.0" %}
+{% set version = "21.12.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 54b9220c9755897f15ead82e4a9a3923dc1a859482c792ca338da14d3ffedec2
+  sha256: 976fded331eea4797f0bfec4ccb1311a78731ec28e07ba330be3db1f4ddd9407
 
 build:
   number: 0
